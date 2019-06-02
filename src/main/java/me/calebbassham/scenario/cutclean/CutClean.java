@@ -1,6 +1,7 @@
 package me.calebbassham.scenario.cutclean;
 
 import me.calebbassham.scenariomanager.Scenario;
+import me.calebbassham.scenariomanager.ScenarioManager;
 import me.calebbassham.scenariomanager.ScenarioStartEvent;
 import me.calebbassham.scenariomanager.ScenarioStopEvent;
 import org.bukkit.Material;
@@ -43,6 +44,7 @@ public class CutClean extends Scenario implements Listener {
 
     @EventHandler
     public void onItemSpawn(ItemSpawnEvent e) {
+        if(!ScenarioManager.isWorld(e.getLocation().getWorld())) return;
         ItemStack item = e.getEntity().getItemStack();
 
         if (item.getType() == GOLD_ORE || item.getType() == IRON_ORE) {
