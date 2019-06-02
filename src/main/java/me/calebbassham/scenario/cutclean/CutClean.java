@@ -45,13 +45,13 @@ public class CutClean extends Scenario implements Listener {
     public void onItemSpawn(ItemSpawnEvent e) {
         ItemStack item = e.getEntity().getItemStack();
 
-        Material smelted = convertToSmelted.get(item.getType());
-        if (smelted != null) item.setType(smelted);
-
         if (item.getType() == GOLD_ORE || item.getType() == IRON_ORE) {
             ExperienceOrb orb = (ExperienceOrb) e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.EXPERIENCE_ORB);
             orb.setExperience(item.getAmount());
         }
+
+        Material smelted = convertToSmelted.get(item.getType());
+        if (smelted != null) item.setType(smelted);
     }
 
 }
